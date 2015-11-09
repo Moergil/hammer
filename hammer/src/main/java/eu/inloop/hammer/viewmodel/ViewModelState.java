@@ -1,4 +1,4 @@
-package eu.inloop.hammer;
+package eu.inloop.hammer.viewmodel;
 
 import java.util.LinkedList;
 import java.util.List;

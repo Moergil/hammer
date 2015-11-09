@@ -11,7 +11,12 @@ public class ContentSwitcher {
 
     protected int activeViewIndex;
 
-    private long fadeDuration = 300;
+    private long transitionDuration;
+
+    public ContentSwitcher(long transitionDuration)
+    {
+        this.transitionDuration = transitionDuration;
+    }
 
     public int register(View view) {
         int index = viewsList.size();
@@ -22,15 +27,16 @@ public class ContentSwitcher {
         return index;
     }
 
-    public void set(int index) {
+    public void setTo(int index) {
+        View activeView = viewsList.get(activeViewIndex);
+        activeView.setVisibility(View.INVISIBLE);
+
         View view = viewsList.get(index);
-
+        view.setVisibility(View.VISIBLE);
         activeViewIndex = index;
-
-        viewsList.get(activeViewIndex).setVisibility(View.VISIBLE);
     }
 
-    public void change(final int index) {
+    public void changeTo(final int index) {
         final int fromIndex = activeViewIndex;
 
         if (fromIndex == index) {
@@ -41,7 +47,7 @@ public class ContentSwitcher {
         if (viewFrom != null) {
             viewFrom.animate()
                     .alpha(0)
-                    .setDuration(fadeDuration)
+                    .setDuration(transitionDuration)
                     .setListener(new AnimatorListenerAdapter() {
                         @Override
                         public void onAnimationEnd(Animator animation) {
@@ -54,7 +60,7 @@ public class ContentSwitcher {
         viewTo.setAlpha(0);
         viewTo.animate()
                 .alpha(1)
-                .setDuration(fadeDuration)
+                .setDuration(transitionDuration)
                 .setListener(new AnimatorListenerAdapter() {
                     @Override
                     public void onAnimationStart(Animator animation) {
