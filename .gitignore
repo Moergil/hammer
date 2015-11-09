@@ -25,6 +25,7 @@ proguard/
 
 # Log Files
 *.log
+<<<<<<< HEAD
 
 # Idea
 /.idea
@@ -33,3 +34,5 @@ proguard/
 
 /testapp
 *.iml
+=======
+>>>>>>> 851bbdd0533cffae6763eaed9671dc608a5b48f4
