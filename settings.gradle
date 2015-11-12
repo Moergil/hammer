@@ -1,1 +1,2 @@
-include ':hammer', ':testapp'
+include ':app'
+include ':library'
