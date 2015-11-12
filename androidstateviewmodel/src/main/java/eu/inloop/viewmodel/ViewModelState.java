@@ -1,14 +1,10 @@
-package eu.inloop.hammer.viewmodel;
-
-import java.util.LinkedList;
-import java.util.List;
+package eu.inloop.viewmodel;
 
 public class ViewModelState {
     private boolean removed;
     private boolean active;
 
-    public void setActive(boolean active)
-    {
+    public void setActive(boolean active) {
         this.active = active;
     }
 
@@ -16,11 +12,11 @@ public class ViewModelState {
         return active;
     }
 
-    public boolean isRemoved() {
-        return removed;
-    }
-
     public void setRemoved() {
         this.removed = true;
+    }
+
+    public boolean isRemoved() {
+        return removed;
     }
 }
