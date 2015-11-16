@@ -39,7 +39,7 @@ public class TestFragment extends StateViewModelBaseFragment<TestView, TestViewM
     }
 
     @Override
-    protected TestView getModelView() {
+    protected TestView getViewForViewModel() {
         return this;
     }
 

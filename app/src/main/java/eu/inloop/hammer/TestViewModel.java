@@ -38,7 +38,7 @@ public class TestViewModel extends AbstractStateViewModel<TestView> {
         super.onStart();
 
         TestView view = getView();
-        if (isColdStart()) {
+        if (getState().isColdStart()) {
             view.setLoading();
             startContentLoad();
         } else if (loading) {

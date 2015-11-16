@@ -1,7 +1,9 @@
 package eu.inloop.viewmodel;
 
+import android.support.annotation.CallSuper;
+
 public abstract class AbstractStateViewModel<T extends IView> extends AbstractViewModel<T> {
-    protected ViewModelState state = new ViewModelState();
+    private ViewModelState state = new ViewModelState();
 
     // TODO check and think about helper state callbacks, if they are allright
     /*
@@ -19,41 +21,33 @@ public abstract class AbstractStateViewModel<T extends IView> extends AbstractVi
     - dispose everything
     - background tasks should be killed in onStop
      */
-    private boolean coldStart;
-    private boolean configChange;
 
-    public void setColdStart(boolean coldStart) {
-        this.coldStart = coldStart;
-    }
-
-    protected boolean isColdStart() {
-        return coldStart;
-    }
-
-    public void setConfigChange(boolean configChange)
-    {
-        this.configChange = configChange;
-    }
-
-    protected boolean isConfigChange()
-    {
-        return configChange;
+    public ViewModelState getState() {
+        return state;
     }
 
     @Override
+    @CallSuper
     public void onStart() {
         super.onStart();
-        coldStart = (checkColdStart()) ? true : coldStart;
+
+        if (checkColdStart()) {
+            state.setColdStart(true);
+        }
+
         state.setActive(true);
     }
 
     @Override
+    @CallSuper
     public void onStop() {
         super.onStop();
         state.setActive(false);
+        state.setColdStart(false);
     }
 
     @Override
+    @CallSuper
     public void onModelRemoved() {
         super.onModelRemoved();
         state.setRemoved();

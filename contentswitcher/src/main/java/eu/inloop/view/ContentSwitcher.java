@@ -13,10 +13,8 @@ public class ContentSwitcher {
         this.transitionDuration = transitionDuration;
     }
 
-    public void prepare(View... views)
-    {
-        for (View view : views)
-        {
+    public void prepare(View... views) {
+        for (View view : views) {
             view.setVisibility(View.INVISIBLE);
         }
     }
@@ -34,12 +32,12 @@ public class ContentSwitcher {
             return;
         }
 
-        animateChangeTransition(activeView, view);
+        runTransition(activeView, view);
 
         this.activeView = view;
     }
 
-    private void animateChangeTransition(final View from, final View to) {
+    private void runTransition(final View from, final View to) {
         if (from != null) {
             from.animate()
                     .alpha(0)

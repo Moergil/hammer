@@ -7,26 +7,24 @@ import eu.inloop.viewmodel.base.ViewModelBaseFragment;
 
 public abstract class StateViewModelBaseFragment<T extends IView, R extends AbstractStateViewModel<T>> extends ViewModelBaseFragment<T, R> {
 
-    private StateViewModelFragmentHelper<T> stateHelper;
-
-    protected abstract T getModelView();
+    protected abstract T getViewForViewModel();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        stateHelper = new StateViewModelFragmentHelper<>(this, getViewModel());
-        stateHelper.onFragmentCreated(savedInstanceState);
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        setModelView(getModelView());
+        setModelView(getViewForViewModel());
     }
 
     @Override
     public void onStop() {
-        stateHelper.onFragmentStop();
+        boolean configChange = getActivity().isChangingConfigurations();
+        getViewModel().getState().setConfigChange(configChange);
+
         super.onStop();
     }
 }
