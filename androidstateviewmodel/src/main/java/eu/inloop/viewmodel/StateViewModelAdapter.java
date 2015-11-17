@@ -1,6 +1,11 @@
 package eu.inloop.viewmodel;
 
-public class ViewModelStateAdapter<T> implements ViewModelStateListener<T> {
+/**
+ * Adapter for {@link StateViewModelListener}
+ *
+ * @param <T> type of parameters for this adapter
+ */
+public class StateViewModelAdapter<T> implements StateViewModelListener<T> {
     @Override
     public void onGuiStateUpdate(T params) {
     }

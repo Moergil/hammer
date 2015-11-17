@@ -4,8 +4,8 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import eu.inloop.viewmodel.AbstractStateViewModel;
-import eu.inloop.viewmodel.ViewModelStateAdapter;
-import eu.inloop.viewmodel.ViewModelStateListener;
+import eu.inloop.viewmodel.StateViewModelAdapter;
+import eu.inloop.viewmodel.StateViewModelListener;
 
 public class TestViewModel extends AbstractStateViewModel<TestView> {
 
@@ -14,13 +14,13 @@ public class TestViewModel extends AbstractStateViewModel<TestView> {
 
     private long stopTimestamp;
 
-    private ViewModelStateListener<String> contentLoadedListener;
+    private StateViewModelListener<String> contentLoadedListener;
 
     @Override
     public void onCreate(Bundle arguments, Bundle savedInstanceState) {
         super.onCreate(arguments, savedInstanceState);
 
-        contentLoadedListener = new ViewModelStateAdapter<String>() {
+        contentLoadedListener = new StateViewModelAdapter<String>() {
             @Override
             public void onGuiStateUpdate(String params) {
                 TestViewModel.this.content = params;
