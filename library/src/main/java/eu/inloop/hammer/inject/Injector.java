@@ -17,17 +17,13 @@ public class Injector {
             objectGraphType.newInstance().build(context);
 
             injectDependenciesToComponents();
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             throw new IllegalStateException("Can not create object graph for type: " + objectGraphType.getName(), e);
         }
     }
 
-    private static void injectDependenciesToComponents()
-    {
-        for (Object component : components.values())
-        {
+    private static void injectDependenciesToComponents() {
+        for (Object component : components.values()) {
             Class componentType = component.getClass();
             while (true) {
                 if (componentType.getAnnotation(InjectDependencies.class) == null) {
@@ -46,8 +42,7 @@ public class Injector {
         }
     }
 
-    public static void registerComponent(Object object)
-    {
+    public static void registerComponent(Object object) {
         registerComponent(object.getClass(), object);
     }
 
@@ -69,8 +64,7 @@ public class Injector {
         return object;
     }
 
-    public static void inject(Object target)
-    {
+    public static void inject(Object target) {
         inject(target, target.getClass());
     }
 

@@ -6,7 +6,9 @@ import android.view.View;
 import eu.inloop.viewmodel.base.ViewModelBaseFragment;
 
 /**
- * Extended base viewmodel fragment for use with the {@link AbstractStateViewModel}, providing state updates and helper methods.
+ * Extended base viewmodel fragment for use with the {@link AbstractStateViewModel}, providing state
+ * updates and helper methods.
+ *
  * @param <T> view
  * @param <R> viewmodel
  */
@@ -14,6 +16,7 @@ public abstract class StateViewModelBaseFragment<T extends IView, R extends Abst
 
     /**
      * Helper method to acquire view associated with the viewmodel.
+     *
      * @return associated view
      */
     protected abstract T getViewForViewModel();

@@ -10,8 +10,8 @@ import android.support.annotation.CallSuper;
  * <p/>
  * The state of the viewmodel can be accessed anytime through {@link #getState()} method. It is
  * usually used during viewmodel start and stop callbacks, to finetune their behaviour, for example
- * not reloading the data and stopping background services when view restarted because of configuration change. See {@link
- * ViewModelState} for more details and usage.
+ * not reloading the data and stopping background services when view restarted because of
+ * configuration change. See {@link ViewModelState} for more details and usage.
  * <p/>
  * Every asynchronous callback should be routed through {@link StateViewModelListener} by using the
  * {@link #fireListener(StateViewModelListener, Object)} method. This mechanic provides callbacks
@@ -20,10 +20,9 @@ import android.support.annotation.CallSuper;
  * it is visible. See {@link StateViewModelListener} for more details and usage.
  * <p/>
  *
+ * @param <T> view which can be associated with this viewmodel
  * @see ViewModelState
  * @see StateViewModelListener
- *
- * @param <T> view which can be associated with this viewmodel
  */
 public abstract class AbstractStateViewModel<T extends IView> extends AbstractViewModel<T> {
     /**
@@ -101,6 +100,10 @@ public abstract class AbstractStateViewModel<T extends IView> extends AbstractVi
      * time.
      * <p/>
      * Implementations are free to add or replace the evaluation of cold start.
+     * <p/>
+     * Cold start will always be <code>true</code> during first start-stop cycle of viewmodel
+     * when it is created for first time, even if this method returns <code>false</code>. Subsequent
+     * start-stop cycles of viewmodel respects return value of this method.
      *
      * @return <code>true</code> if viewmodel is coldstarted, <code>false</code> otherwise
      */

@@ -8,8 +8,7 @@ public class PlainTaskHandle implements TaskHandle {
         this.cancelled = true;
     }
 
-    public boolean isCancelled()
-    {
+    public boolean isCancelled() {
         return cancelled;
     }
 }

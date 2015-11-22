@@ -6,8 +6,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
-import java.util.NoSuchElementException;
-
 public class BaseAppActivity extends AppCompatActivity {
 
     private boolean defaultStartAnim, defaultBackAnim;
@@ -40,8 +38,7 @@ public class BaseAppActivity extends AppCompatActivity {
     }
 
     protected void startAnim() {
-        if (defaultStartAnim)
-        {
+        if (defaultStartAnim) {
             return;
         }
 
@@ -72,21 +69,18 @@ public class BaseAppActivity extends AppCompatActivity {
     }
 
     protected void backAnim() {
-        if (defaultBackAnim)
-        {
+        if (defaultBackAnim) {
             return;
         }
 
         overridePendingTransition(animBackIn, animBackOut);
     }
 
-    public boolean isLandscape()
-    {
+    public boolean isLandscape() {
         return getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE;
     }
 
-    public boolean isPortrait()
-    {
+    public boolean isPortrait() {
         return !isLandscape();
     }
 }

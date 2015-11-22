@@ -5,8 +5,7 @@ public abstract class AbstractBackgroundService implements BackgroundService {
 
     @Override
     public void start() {
-        if (!running)
-        {
+        if (!running) {
             running = true;
             onStarted();
         }
@@ -14,8 +13,7 @@ public abstract class AbstractBackgroundService implements BackgroundService {
 
     @Override
     public void stop() {
-        if (running)
-        {
+        if (running) {
             running = false;
             onStopped();
         }
@@ -27,5 +25,6 @@ public abstract class AbstractBackgroundService implements BackgroundService {
     }
 
     protected abstract void onStarted();
+
     protected abstract void onStopped();
 }
